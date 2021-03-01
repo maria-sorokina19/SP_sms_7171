@@ -1,0 +1,5 @@
+FROM ubuntu
+RUN apt update && apt install build-essential -y
+COPY Hello_7171_sms.s .
+RUN gcc -no=pie Hello_7171_sms.s -o Hello_test -g
+CMD ./Hello_test
