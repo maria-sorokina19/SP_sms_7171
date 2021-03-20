@@ -1,0 +1,7 @@
+FROM amazonlinux
+RUN yum update -y && yum install make glibc-devel gcc patch -y && yum install -y gcc-c++ -y && yum -y install net-tools.x86_64 -y && yum install iputils -y
+COPY process_sms_1.cpp . 
+COPY process_sms_2.cpp .
+RUN g++ -o process1 process_sms_1.cpp
+RUN g++ -o process2 process_sms_2.cpp -pthread
+CMD ./process2
