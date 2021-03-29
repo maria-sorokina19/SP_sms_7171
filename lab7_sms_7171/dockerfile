@@ -1,0 +1,6 @@
+FROM amazonlinux
+RUN yum update -y && yum install make glibc-devel gcc patch -y && yum install -y gcc-c++ -y 
+COPY Server.cpp . 
+COPY Client.cpp .
+RUN g++ -o Server Server.cpp
+RUN g++ -o Client Client.cpp
